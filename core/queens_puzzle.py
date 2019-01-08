@@ -1,13 +1,28 @@
+from orm.database import db_access, NCase, Solution
+
+
 class QueensPuzzle:
 
     def __init__(self, size):
         self.size = size
         self.solutions = 0
-        self.simulate_puzzle()
+        if db_access.query(NCase).filter_by(n=self.size).count() == 0:
+            ncase = NCase(n=self.size, solutions=0)
+            db_access.add(ncase)
+            db_access.commit()
+            self.ncase_id = ncase.id
+            self.simulate_puzzle()
+        else:
+            ncase = db_access.query(NCase).filter_by(n=self.size).first()
+            self.solutions = ncase.solutions
+            self.print_result()
 
     def simulate_puzzle(self):
         board = [-1] * self.size
         self.locate_queen(board, 0)
+        ncase = db_access.query(NCase).filter_by(n=self.size).first()
+        ncase.solutions = self.solutions
+        db_access.commit()
         self.print_result()
 
     def print_result(self):
@@ -15,6 +30,9 @@ class QueensPuzzle:
 
     def locate_queen(self, board, current_row):
         if current_row == self.size:
+            solution = Solution(ncase_id=self.ncase_id, solution=(str(board).strip('[]')).replace(" ", ""))
+            db_access.add(solution)
+            db_access.commit()
             self.solutions += 1
         else:
             for column in range(self.size):
