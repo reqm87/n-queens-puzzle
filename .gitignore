@@ -1,0 +1,12 @@
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# Visual Studio Code
+*.vscode
+
