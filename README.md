@@ -1,2 +1,3 @@
-# n-queens-puzzle
-Coding Challenge
+# N Queens Puzzle
+
+## Coding Challenge
