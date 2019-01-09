@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  web:
+    build: ./core
+    volumes:
+      - ./core:/queenspuzzle
+    depends_on:
+      - database
+    tty: true
+
+  database:
+    image: postgres:10
+    ports:
+      - 15432:5432
+    env_file:
+      - ./config/postgres/database_environment
+

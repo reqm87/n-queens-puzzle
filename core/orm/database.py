@@ -4,8 +4,12 @@ from sqlalchemy import create_engine, Column, String, Integer, ForeignKey
 
 from settings import database_name, database_user, database_password
 
-database_string = "postgresql://{}:{}@localhost:5432/{}".format(database_user, database_password, database_name)
-database = create_engine(database_string)
+try:
+    database_string = "postgresql://{}:{}@database:5432/{}".format(database_user, database_password, database_name)
+    database = create_engine(database_string)
+except Exception as ex:
+    database_string = "postgresql://{}:{}@localhost:5432/{}".format(database_user, database_password, database_name)
+    database = create_engine(database_string)
 
 Session = sessionmaker(database)
 db_access = Session()
