@@ -85,34 +85,18 @@ Change the information corresponding to the configuration that you did before.
 
 ### Run the Application
 
-You have two ways to run the application.
-
-First way, run the following commands:
+Run the application with the following commands:
 
 ```bash
 sudo docker-compose exec web bash
 python main.py
 ```
 
-Second way, run the following command:
-
-```bash
-sudo docker-compose exec web bash -c 'python main.py'
-```
-
 ### Run the Unit Tests
 
-You have two ways to run the unit tests.
-
-First way, run the following commands:
+Run the unit tests with the following commands:
 
 ```bash
 sudo docker-compose exec web bash
 python -m pytest tests.py
-```
-
-Second way, run the following command:
-
-```bash
-sudo docker-compose exec web bash -c 'python -m pytest tests.py'
 ```
