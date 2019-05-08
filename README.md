@@ -112,14 +112,14 @@ You have two ways to run the application.
 First way, please run the following commands:
 
 ```bash
-sudo docker-compose exec web bash
+sudo docker-compose exec app bash
 python main.py
 ```
 
 Second way, please run the following command:
 
 ```bash
-sudo docker-compose exec web bash -c 'python main.py'
+sudo docker-compose exec app bash -c 'python main.py'
 ```
 
 ### Run the Unit Tests
@@ -129,12 +129,12 @@ Ypu have two ways to run the unit tests.
 First way, please run the following commands:
 
 ```bash
-sudo docker-compose exec web bash
+sudo docker-compose exec app bash
 python -m pytest tests.py
 ```
 
 Second way, please run the following command:
 
 ```bash
-sudo docker-compose exec web bash -c 'python -m pytest tests.py'
+sudo docker-compose exec app bash -c 'python -m pytest tests.py'
 ```
