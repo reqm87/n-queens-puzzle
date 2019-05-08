@@ -62,6 +62,41 @@ sudo docker-compose build
 sudo docker-compose up -d
 ```
 
+**Note:** You will need to do a couple of things in the database.
+
++ You will need to access the database, running the following commands:
+
+First step:
+
+```bash
+sudo docker-compose exec --user postgres database bash
+```
+
+Second step:
+
+```bash
+psql
+```
+
++ Change the password to postgres user, using the following command:
+
+```bash
+ALTER USER postgres WITH PASSWORD 'password';
+```
+
++ Create the database, using the following command:
+
+```bash
+CREATE DATABASE nqueenspuzzle;
+```
+
++ Exit from the database, using the following commands:
+
+```bash
+\q
+exit
+```
+
 + The final step is create the local settings file.
 
 Please, create a new file called "local_settings.py" in "n-queens-puzzle/core/config".

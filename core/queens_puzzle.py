@@ -2,7 +2,6 @@ from orm.database import db_access, NCase, Solution
 
 
 class QueensPuzzle:
-
     def __init__(self, size):
         self.size = size
         self.solutions = 0
@@ -26,11 +25,16 @@ class QueensPuzzle:
         self.print_result()
 
     def print_result(self):
-        print("Found {} solutions for N = {}.".format(self.solutions, self.size))
+        print(
+            "Found {} solutions for N = {}.".format(self.solutions, self.size)
+        )
 
     def locate_queen(self, board, current_row):
         if current_row == self.size:
-            solution = Solution(ncase_id=self.ncase_id, solution=(str(board).strip('[]')).replace(" ", ""))
+            solution = Solution(
+                ncase_id=self.ncase_id,
+                solution=(str(board).strip('[]')).replace(" ", ""),
+            )
             db_access.add(solution)
             db_access.commit()
             self.solutions += 1
@@ -43,9 +47,10 @@ class QueensPuzzle:
     @staticmethod
     def verify_spot(board, taken_rows, column):
         for row in range(taken_rows):
-            if board[row] == column or \
-                    board[row] - row == column - taken_rows or \
-                    board[row] + row == column + taken_rows:
+            if (
+                board[row] == column
+                or board[row] - row == column - taken_rows
+                or board[row] + row == column + taken_rows
+            ):
                 return False
         return True
-

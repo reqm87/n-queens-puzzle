@@ -13,5 +13,4 @@ before_script:
   - docker-compose ps
 
 script:
-  - docker-compose exec web bash -c 'python -m pytest tests.py'
-
+  - docker-compose exec app bash -c 'python -m pytest tests.py'

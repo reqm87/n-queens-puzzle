@@ -3,7 +3,6 @@ database_user = 'postgres'
 database_password = 'password'
 
 try:
-	from config.local_settings import *
+    from config.local_settings import *
 except ImportError:
-	pass
-
+    pass
